@@ -16,7 +16,6 @@ struct RectangleView: View {
     @State var length: Double = 70
     @State var width: Double = 25
     
-    
     // MARK: computed properties
     var area: Double {
         return length * width
@@ -41,7 +40,8 @@ struct RectangleView: View {
                 .font(.title2)
             
             //slilder to control length
-            Slider(value: Binding.constant(length), in: 0...100,
+            Slider(value: $length,
+                   in: 0...100,
                    label: {Text("Length")},
                    minimumValueLabel: {Text("0")},
                    maximumValueLabel: {Text("100")})
@@ -55,7 +55,8 @@ struct RectangleView: View {
                 .font(.title2)
             
             //slilder to control width
-            Slider(value: Binding.constant(width), in: 0...100,
+            Slider(value: $width,
+                   in: 0...100,
                    label: {Text("Width")},
                    minimumValueLabel: {Text("0")},
                    maximumValueLabel: {Text("100")})
