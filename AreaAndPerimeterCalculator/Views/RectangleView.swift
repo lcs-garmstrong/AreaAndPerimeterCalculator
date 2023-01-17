@@ -9,9 +9,17 @@ import SwiftUI
 
 struct RectangleView: View {
     
-    // mark: stored properties
+    // MARK: stored properties
     
-    // mark: computed properties
+    let length: Double = 7
+    
+    let width: Double = 5
+    
+    
+    // MARK: computed properties
+    var area: Double {
+        return length * width
+    }
     
     // shows our user interface
     var body: some View {
@@ -26,8 +34,31 @@ struct RectangleView: View {
                 Spacer()
             }
             
-            Spacer()
+            // Length
+            Text("Length")
+                .bold()
+                .font(.title2)
             
+            // string interpolation \() to display
+            Text("\(length)")
+            
+            // Witdth
+            Text("Width")
+                .bold()
+                .font(.title2)
+            
+            // string interpolation \() to display
+            Text("\(width)")
+            
+            // Area
+            Text("Area")
+                .bold()
+                .font(.title2)
+            
+            // string interpolation \() to display
+            Text("\(area)")
+
+            Spacer()
         }
     }
 }
