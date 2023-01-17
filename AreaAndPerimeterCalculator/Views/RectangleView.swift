@@ -21,6 +21,11 @@ struct RectangleView: View {
         return length * width
     }
     
+    var perimeter: Double {
+        return (2 * length) + (2 * width)
+    }
+  
+    
     // shows our user interface
     var body: some View {
         VStack{
@@ -34,47 +39,62 @@ struct RectangleView: View {
                 Spacer()
             }
             
-            // MARK: Length
-            Text("Length")
-                .bold()
-                .font(.title2)
+            Group {
+                // MARK: Length
+                Text("Length")
+                    .bold()
+                    .font(.title2)
+                
+                //slilder to control length
+                Slider(value: $length,
+                       in: 0...100,
+                       label: {Text("Length")},
+                       minimumValueLabel: {Text("0")},
+                       maximumValueLabel: {Text("100")})
+                
+                // string interpolation \() to display
+                Text("\(length)")
+            }
+
+            Group {
+                // MARK: Witdth
+                Text("Width")
+                    .bold()
+                    .font(.title2)
+                
+                //slilder to control width
+                Slider(value: $width,
+                       in: 0...100,
+                       label: {Text("Width")},
+                       minimumValueLabel: {Text("0")},
+                       maximumValueLabel: {Text("100")})
+                
+                // string interpolation \() to display
+                Text("\(width)")
+            }
             
-            //slilder to control length
-            Slider(value: $length,
-                   in: 0...100,
-                   label: {Text("Length")},
-                   minimumValueLabel: {Text("0")},
-                   maximumValueLabel: {Text("100")})
-            
-            // string interpolation \() to display
-            Text("\(length)")
-            
-            // MARK: Witdth
-            Text("Width")
-                .bold()
-                .font(.title2)
-            
-            //slilder to control width
-            Slider(value: $width,
-                   in: 0...100,
-                   label: {Text("Width")},
-                   minimumValueLabel: {Text("0")},
-                   maximumValueLabel: {Text("100")})
-            
-            // string interpolation \() to display
-            Text("\(width)")
-            
-            // MARK: Area
-            Text("Area")
-                .bold()
-                .font(.title2)
-            
-            // string interpolation \() to display
-            Text("\(area)")
-            
-            
+            Group{
+                // MARK: Area
+                Text("Area")
+                    .bold()
+                    .font(.title2)
+                
+                // string interpolation \() to display
+                Text("\(area)")
+            }
+
+            Group {
+                // MARK: perimeter
+                Text("Perimeter")
+                    .bold()
+                    .font(.title2)
+                
+                // string interpolation \() to display
+                Text("\(perimeter)")
+            }
             Spacer()
         }
+        .padding()
     }
 }
 
