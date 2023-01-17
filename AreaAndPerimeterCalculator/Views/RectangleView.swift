@@ -10,10 +10,11 @@ import SwiftUI
 struct RectangleView: View {
     
     // MARK: stored properties
-    
-    let length: Double = 7
-    
-    let width: Double = 5
+    // @State is a property wrapper
+    // Telling Switft UI to watch these properties for changes
+    // Update the user interface when they do
+    @State var length: Double = 70
+    @State var width: Double = 25
     
     
     // MARK: computed properties
@@ -29,35 +30,48 @@ struct RectangleView: View {
                 Image("Rectangle")
                     .resizable()
                     .scaledToFit()
-                .frame(width: 250)
+                    .frame(width: 250)
                 
                 Spacer()
             }
             
-            // Length
+            // MARK: Length
             Text("Length")
                 .bold()
                 .font(.title2)
             
+            //slilder to control length
+            Slider(value: Binding.constant(length), in: 0...100,
+                   label: {Text("Length")},
+                   minimumValueLabel: {Text("0")},
+                   maximumValueLabel: {Text("100")})
+            
             // string interpolation \() to display
             Text("\(length)")
             
-            // Witdth
+            // MARK: Witdth
             Text("Width")
                 .bold()
                 .font(.title2)
             
+            //slilder to control width
+            Slider(value: Binding.constant(width), in: 0...100,
+                   label: {Text("Width")},
+                   minimumValueLabel: {Text("0")},
+                   maximumValueLabel: {Text("100")})
+            
             // string interpolation \() to display
             Text("\(width)")
             
-            // Area
+            // MARK: Area
             Text("Area")
                 .bold()
                 .font(.title2)
             
             // string interpolation \() to display
             Text("\(area)")
-
+            
+            
             Spacer()
         }
     }
