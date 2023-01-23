@@ -41,6 +41,7 @@ struct CylinderVIew: View {
                 //slilder to control length
                 Slider(value: $height,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Height")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
@@ -60,6 +61,7 @@ struct CylinderVIew: View {
                 //slilder to control length
                 Slider(value: $radius,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Radius")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
