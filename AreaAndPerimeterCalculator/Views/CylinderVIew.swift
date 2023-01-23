@@ -1,102 +1,95 @@
 //
-//  RectangleView.swift
+//  CylinderVIew.swift
 //  AreaAndPerimeterCalculator
 //
-//  Created by Graeme Armstrong on 2023-01-17.
+//  Created by Graeme Armstrong on 2023-01-22.
 //
 
 import SwiftUI
 
-struct RectangleView: View {
+struct CylinderVIew: View {
     
-    // MARK: stored properties
-    // @State is a property wrapper
-    // Telling Switft UI to watch these properties for changes
-    // Update the user interface when they do
-    @State var length: Double = 5
-    @State var width: Double = 5
+    @State var radius: Double = 5
+    @State var height: Double = 5
     
-    // MARK: computed properties
-    var area: Double {
-        return length * width
+    var volume: Double {
+        return Double.pi * radius * radius * height
     }
     
-    var perimeter: Double {
-        return (2 * length) + (2 * width)
+    var surfaceArea: Double {
+        return (2 * Double.pi * radius * radius) + (2 * Double.pi * radius * height)
     }
     
-    
-    // shows our user interface
     var body: some View {
         VStack{
             
-            Group{
-                Image("Rectangle")
+            Group {
+                Image("Cylinder")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 400)
+                
                 Spacer()
             }
             
             Group {
                 // MARK: Length
-                Text("Length")
+                Text("Height")
                     .bold()
                     .font(.title2)
                 
                 //slilder to control length
-                Slider(value: $length,
+                Slider(value: $height,
                        in: 0...100,
-                       label: {Text("Length")},
+                       label: {Text("Height")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
                 
                 // string interpolation \() to display
-                Text("\(length)")
+                Text("\(height)")
                 
                 Spacer()
             }
             
             Group {
-                // MARK: Witdth
-                Text("Width")
+                // MARK: Length
+                Text("Radius")
                     .bold()
                     .font(.title2)
                 
-                //slilder to control width
-                Slider(value: $width,
+                //slilder to control length
+                Slider(value: $radius,
                        in: 0...100,
-                       label: {Text("Width")},
+                       label: {Text("Radius")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
                 
                 // string interpolation \() to display
-                Text("\(width)")
+                Text("\(radius)")
+                
                 Spacer()
             }
             
             Group{
                 // MARK: Area
-                Text("Area")
+                Text("Surface Area")
                     .bold()
                     .font(.title2)
                 
                 // string interpolation \() to display
-                Text("\(area)")
+                Text("\(surfaceArea)")
                 
                 Spacer()
             }
             
-            Group {
-                // MARK: perimeter
-                Text("Perimeter")
+            Group{
+                // MARK: Area
+                Text("Volume")
                     .bold()
                     .font(.title2)
                 
                 // string interpolation \() to display
-                Text("\(perimeter)")
-                
-                Spacer()
+                Text("\(volume)")
             }
             
         }
@@ -104,8 +97,8 @@ struct RectangleView: View {
     }
 }
 
-struct RectangleView_Previews: PreviewProvider {
+struct CylinderVIew_Previews: PreviewProvider {
     static var previews: some View {
-        RectangleView()
+        CylinderVIew()
     }
 }
