@@ -42,6 +42,7 @@ struct SquareBasedPyramidView: View {
                 //slilder to control length
                 Slider(value: $base,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Base")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
@@ -61,6 +62,7 @@ struct SquareBasedPyramidView: View {
                 //slilder to control length
                 Slider(value: $height,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Height")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
@@ -80,6 +82,7 @@ struct SquareBasedPyramidView: View {
                 //slilder to control length
                 Slider(value: $side,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Side")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})

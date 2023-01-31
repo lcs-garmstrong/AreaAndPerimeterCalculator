@@ -38,6 +38,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		973EF1BF2988A8B100B8C673 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		97A42E35297705A700673739 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				97A42E41297705A700673739 /* AreaAndPerimeterCalculatorApp.swift */,
+				973EF1BF2988A8B100B8C673 /* Model */,
 				97A42E4F297705D100673739 /* Views */,
 				97A42E45297705AD00673739 /* Assets.xcassets */,
 				97A42E47297705AD00673739 /* Preview Content */,
