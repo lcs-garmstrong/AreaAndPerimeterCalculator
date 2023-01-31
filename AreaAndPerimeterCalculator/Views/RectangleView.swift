@@ -47,6 +47,7 @@ struct RectangleView: View {
                 //slilder to control length
                 Slider(value: $length,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Length")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})
@@ -66,6 +67,7 @@ struct RectangleView: View {
                 //slilder to control width
                 Slider(value: $width,
                        in: 0...100,
+                       step: 1.0,
                        label: {Text("Width")},
                        minimumValueLabel: {Text("0")},
                        maximumValueLabel: {Text("100")})

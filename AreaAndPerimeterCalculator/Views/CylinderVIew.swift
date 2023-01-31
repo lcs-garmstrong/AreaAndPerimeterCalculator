@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CylinderVIew: View {
     
+    @State var priorResults: [CylinderResult] = []
+    
     @State var radius: Double = 5
     @State var height: Double = 5
     
@@ -32,44 +34,46 @@ struct CylinderVIew: View {
                 Spacer()
             }
             
-            Group {
-                // MARK: Length
-                Text("Height")
-                    .bold()
-                    .font(.title2)
+            HStack{
+                Group {
+                    VStack {
+                        // MARK: Length
+                        Text("Height")
+                            .bold()
+                            .font(.title2)
+                        
+                        //slilder to control length
+                        Slider(value: $height,
+                               in: 0...100,
+                               step: 1.0,
+                               label: {Text("Height")})
+                        
+                        // string interpolation \() to display
+                        Text("\(height.formatted(.number.precision(.fractionLength(1))))")
+                        
+                        Spacer()
+                    }
+                }
                 
-                //slilder to control length
-                Slider(value: $height,
-                       in: 0...100,
-                       step: 1.0,
-                       label: {Text("Height")},
-                       minimumValueLabel: {Text("0")},
-                       maximumValueLabel: {Text("100")})
-                
-                // string interpolation \() to display
-                Text("\(height)")
-                
-                Spacer()
-            }
-            
-            Group {
-                // MARK: Length
-                Text("Radius")
-                    .bold()
-                    .font(.title2)
-                
-                //slilder to control length
-                Slider(value: $radius,
-                       in: 0...100,
-                       step: 1.0,
-                       label: {Text("Radius")},
-                       minimumValueLabel: {Text("0")},
-                       maximumValueLabel: {Text("100")})
-                
-                // string interpolation \() to display
-                Text("\(radius)")
-                
-                Spacer()
+                Group {
+                    VStack {
+                        // MARK: Length
+                        Text("Radius")
+                            .bold()
+                            .font(.title2)
+                        
+                        //slilder to control length
+                        Slider(value: $radius,
+                               in: 0...100,
+                               step: 1.0,
+                               label: {Text("Radius")})
+                        
+                        // string interpolation \() to display
+                        Text("\(radius.formatted(.number.precision(.fractionLength(1))))")
+                        
+                        Spacer()
+                    }
+                }
             }
             
             Group{
@@ -92,7 +96,34 @@ struct CylinderVIew: View {
                 
                 // string interpolation \() to display
                 Text("\(volume)")
+                
+                
             }
+            
+            // Button
+            Button(action: {
+                let latestResult = CylinderResult(height: height,
+                                                  radius: radius,
+                                                  roots: volume,
+                                                  roots2: surfaceArea)
+                priorResults.append(latestResult)
+            }, label: {
+                Text("Save Results")
+            })
+            .buttonStyle(.bordered)
+            .padding()
+            
+            // History
+            Text("History:")
+                .font(.largeTitle)
+            
+            List(priorResults.reversed()) { currentResult in
+                HStack {
+                    Spacer()
+                    ResultView(somePriorResult: currentResult)
+                }
+            }
+            Spacer()
             
         }
         .padding()
